@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+
+    tools:context=".AddClassFragment">
+
+    <TextView
+        android:id="@+id/header_title_Tv"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="火曜 / 1コマ" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/class_name_Til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title_Tv"
+        android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/class_name_Et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="授業名"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/set_from_preset_btn"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/class_name_Til"
+        android:layout_centerHorizontal="true"
+        android:text="プリセットから追加" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="30dp"
+        android:text="保存" />
+
+
+</RelativeLayout>
