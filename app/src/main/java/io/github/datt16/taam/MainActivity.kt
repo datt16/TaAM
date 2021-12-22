@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
         }
-
     }
 
     private fun setText(obj: ClassEntity): Completable {
