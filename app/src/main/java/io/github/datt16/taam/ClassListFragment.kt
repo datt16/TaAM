@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import io.github.datt16.taam.databinding.FragmentClassListBinding
 import io.github.datt16.taam.model.ClassEntity
 
 class ClassListFragment : Fragment() {
 
-    private var recyclerView: RecyclerView? = null
+    private var _binding: FragmentClassListBinding? = null
+    private val binding get() = _binding!!
+
 
     private val sampleData: List<ClassEntity> = listOf(
         ClassEntity(0, "this is test data.", "TEST1"),
@@ -24,16 +28,16 @@ class ClassListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_class_list, container, false)
+        _binding = FragmentClassListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.recyclerView = view.findViewById(R.id.class_list_RecycleView)
 
-        this.recyclerView?.apply {
+        binding.classListRecycleView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             itemAnimator = DefaultItemAnimator()
@@ -43,7 +47,6 @@ class ClassListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        this.recyclerView?.adapter = null
-        this.recyclerView = null
+        _binding = null
     }
 }
