@@ -14,15 +14,31 @@
         android:id="@+id/classListFragment"
         android:name="io.github.datt16.taam.ClassListFragment"
         android:label="fragment_class_list"
-        tools:layout="@layout/fragment_class_list" />
+        tools:layout="@layout/fragment_class_list" >
+        <action
+            android:id="@+id/action_classListFragment_to_addClassFragment"
+            app:destination="@id/addClassFragment" />
+        <action
+            android:id="@+id/action_classListFragment_to_classDetailFragment"
+            app:destination="@id/classDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/classDetailFragment"
         android:name="io.github.datt16.taam.ClassDetailFragment"
         android:label="fragment_class_detail"
-        tools:layout="@layout/fragment_class_detail" />
+        tools:layout="@layout/fragment_class_detail" >
+        <argument
+            android:name="classId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
     <fragment
         android:id="@+id/addClassFragment"
         android:name="io.github.datt16.taam.AddClassFragment"
         android:label="fragment_add_class"
-        tools:layout="@layout/fragment_add_class" />
+        tools:layout="@layout/fragment_add_class" >
+        <action
+            android:id="@+id/action_addClassFragment_to_classListFragment"
+            app:destination="@id/classListFragment" />
+    </fragment>
 </navigation>

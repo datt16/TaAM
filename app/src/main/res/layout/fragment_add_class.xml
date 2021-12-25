@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
 
     tools:context=".AddClassFragment">
 
@@ -12,7 +11,7 @@
         style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="火曜 / 1コマ" />
+        android:text="授業の追加" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/class_name_Til"
@@ -29,16 +28,32 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/class_description_Til"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/class_name_Til"
+        android:layout_marginTop="8dp">
+
+        <EditText
+            android:id="@+id/class_description_Et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="メモ"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/set_from_preset_btn"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/class_name_Til"
+        android:layout_below="@id/class_description_Til"
         android:layout_centerHorizontal="true"
         android:text="プリセットから追加" />
 
     <Button
+        android:id="@+id/save_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
