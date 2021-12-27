@@ -47,13 +47,7 @@ class AddClassFragment : Fragment() {
         if (TextUtils.isEmpty(newTitle)) {
             binding.classNameTil.error = "授業名を入力してください"
         } else {
-            // class追加
-//            AppDatabase.getInstance()?.let { db ->
-//                val dao = db.classDao()
-//                dao.saveClass(ClassEntity.create4insert(newTitle, newDescription))
-//                    .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe()
-//            }
+            
 
             // 授業リスト画面に遷移
             findNavController().navigate(R.id.action_addClassFragment_to_classListFragment)

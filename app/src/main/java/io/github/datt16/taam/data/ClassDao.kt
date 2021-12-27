@@ -1,9 +1,7 @@
 package io.github.datt16.taam.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import io.github.datt16.taam.model.ClassEntity
 import io.reactivex.Completable
 import io.reactivex.Maybe
@@ -13,7 +11,7 @@ import io.reactivex.Single
 interface ClassDao {
     // データの取得メソッド
     @Query("SELECT * FROM classes")
-    fun loadAllClasses(): Single<List<ClassEntity>>
+    fun loadAllClasses(): LiveData<List<ClassEntity>>
 
     @Query("SELECT * FROM classes WHERE id = :id")
     fun findById(id: Long): Maybe<ClassEntity>
@@ -21,4 +19,7 @@ interface ClassDao {
     // 挿入メソッド
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveClass(classEntity: ClassEntity): Completable
+
+    @Query("DELETE FROM classes")
+    fun deleteAll()
 }

@@ -1,5 +1,6 @@
 package io.github.datt16.taam
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.datt16.taam.databinding.ClassListRecyclerViewItemBinding
 import io.github.datt16.taam.model.ClassEntity
 
-class ClassListRecyclerViewAdapter(private val classList: List<ClassEntity>) :
+class ClassListRecyclerViewAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<ClassListViewHolder>() {
+
+    private var classList: List<ClassEntity> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClassListViewHolder {
         val view = ClassListRecyclerViewItemBinding.inflate(
@@ -24,6 +27,11 @@ class ClassListRecyclerViewAdapter(private val classList: List<ClassEntity>) :
         holder.bind(classList[position])
     }
 
+    internal fun setClass(clsList: List<ClassEntity>) {
+        this.classList = clsList
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return classList.size
     }
@@ -36,5 +44,4 @@ class ClassListViewHolder(private val binding: ClassListRecyclerViewItemBinding)
         binding.TitleTv.text = cls.name
         binding.subTitleTv.text = cls.description
     }
-
 }

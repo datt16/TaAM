@@ -1,11 +1,16 @@
 package io.github.datt16.taam
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +28,7 @@ class ClassListFragment : Fragment() {
     private var _binding: FragmentClassListBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var classListViewModel: ClassListViewModel
 
     private val sampleData: List<ClassEntity> = listOf(
         ClassEntity(0, "TEST1", "this is test data."),
@@ -32,6 +38,16 @@ class ClassListFragment : Fragment() {
 
     private var classList: List<ClassEntity>? = null
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        classListViewModel =
+            ViewModelProvider(requireActivity(), ClassListViewModelFactory(Application())).get(
+                ClassListViewModel::class.java
+            )
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,21 +55,26 @@ class ClassListFragment : Fragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         _binding = FragmentClassListBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        setSampleData()
-//        getClassList()
         super.onViewCreated(view, savedInstanceState)
 
-        binding.classListRecycleView.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
-            itemAnimator = DefaultItemAnimator()
-//            adapter = ClassListRecyclerViewAdapter(classList!!)
-            adapter = ClassListRecyclerViewAdapter(sampleData)
-        }
+
+        val recyclerView = binding.classListRecycleView
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.itemAnimator = DefaultItemAnimator()
+
+        val adapter = ClassListRecyclerViewAdapter(this.requireContext())
+        recyclerView.adapter = adapter
+
+        classListViewModel.allClasses.observe(this.requireActivity(), Observer { cls ->
+            cls?.let { adapter.setClass(it) }
+        })
+
 
         binding.classListFab.setOnClickListener {
             findNavController().navigate(R.id.action_classListFragment_to_addClassFragment)
@@ -64,26 +85,4 @@ class ClassListFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    private fun setSampleData() {
-//        AppDatabase.getInstance()?.let { db ->
-//            val dao = db.classDao()
-//            dao.saveClass(sampleData[0])
-//                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe()
-//        }
-    }
-
-    private fun getClassList() {
-//        AppDatabase.getInstance()?.let { db ->
-//            val dao = db.classDao()
-//            dao.loadAllClasses().flatMapCompletable { setClassList(it) }
-//                .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-//                .subscribe()
-//        }
-    }
-
-//    private fun setClassList(cls: List<ClassEntity>): Completable {
-//        this.classList = cls
-//        return Completable.complete()
-//    }
 }

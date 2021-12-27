@@ -8,6 +8,5 @@ class Application : Application() {
         super.onCreate()
         // AppDatabaseをビルドする
         this.deleteDatabase("sample.db")
-        AppDatabase.init(this)
     }
 }
