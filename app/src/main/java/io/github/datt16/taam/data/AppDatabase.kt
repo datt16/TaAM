@@ -1,6 +1,7 @@
 package io.github.datt16.taam.data
 
 import android.content.Context
+import android.util.Log
 import androidx.room.CoroutinesRoom
 import androidx.room.Database
 import androidx.room.Room
@@ -15,21 +16,30 @@ import kotlinx.coroutines.launch
 abstract class AppDatabase : RoomDatabase() {
     abstract fun classDao(): ClassDao
 
-
     private class AppDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
-            INSTANCE?.let { db ->
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let {
                 scope.launch(Dispatchers.IO) {
-                    populateDatabase(db.classDao())
+                    populateDatabase(it.classDao())
                 }
             }
         }
 
         fun populateDatabase(dao: ClassDao) {
             dao.deleteAll()
-            dao.saveClass(ClassEntity.create4insert("TEST1", "this is test data."))
-            dao.saveClass(ClassEntity.create4insert("TEST2", "this is test data."))
+            dao.saveClass(
+                ClassEntity.create4insert(
+                    "TEST1",
+                    "this is test data. Add from DB CallBack."
+                )
+            )
+            dao.saveClass(
+                ClassEntity.create4insert(
+                    "TEST2",
+                    "this is test data. Add from DB CallBack."
+                )
+            )
 
         }
     }
@@ -39,6 +49,7 @@ abstract class AppDatabase : RoomDatabase() {
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase {
+            Log.d("DB", "get Instance called")
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,

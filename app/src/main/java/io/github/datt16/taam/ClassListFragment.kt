@@ -30,23 +30,7 @@ class ClassListFragment : Fragment() {
 
     private lateinit var classListViewModel: ClassListViewModel
 
-    private val sampleData: List<ClassEntity> = listOf(
-        ClassEntity(0, "TEST1", "this is test data."),
-        ClassEntity(1, "TEST2", "this is test data."),
-        ClassEntity(2, "TEST3", "this is test data.")
-    )
-
     private var classList: List<ClassEntity>? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        classListViewModel =
-            ViewModelProvider(requireActivity(), ClassListViewModelFactory(Application())).get(
-                ClassListViewModel::class.java
-            )
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +38,10 @@ class ClassListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
+        classListViewModel = ViewModelProvider(
+            this,
+            ClassListViewModelFactory(activity?.application as Application)
+        ).get(ClassListViewModel::class.java)
         _binding = FragmentClassListBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -71,7 +59,8 @@ class ClassListFragment : Fragment() {
         val adapter = ClassListRecyclerViewAdapter(this.requireContext())
         recyclerView.adapter = adapter
 
-        classListViewModel.allClasses.observe(this.requireActivity(), Observer { cls ->
+        classListViewModel.insert(ClassEntity.create4insert("TEST2", "this is test data."))
+        classListViewModel.allClasses.observe(this.requireActivity(), { cls ->
             cls?.let { adapter.setClass(it) }
         })
 

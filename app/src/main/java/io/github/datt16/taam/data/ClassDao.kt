@@ -14,11 +14,11 @@ interface ClassDao {
     fun loadAllClasses(): LiveData<List<ClassEntity>>
 
     @Query("SELECT * FROM classes WHERE id = :id")
-    fun findById(id: Long): Maybe<ClassEntity>
+    fun findById(id: Long): ClassEntity
 
     // 挿入メソッド
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveClass(classEntity: ClassEntity): Completable
+    fun saveClass(classEntity: ClassEntity)
 
     @Query("DELETE FROM classes")
     fun deleteAll()

@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class ClassListViewModel(app: Application) : AndroidViewModel(app) {
+
     // リポジトリ
     private val repository: ClassRepository
 
