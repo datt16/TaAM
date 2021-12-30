@@ -59,7 +59,6 @@ class ClassListFragment : Fragment() {
         val adapter = ClassListRecyclerViewAdapter(this.requireContext())
         recyclerView.adapter = adapter
 
-        classListViewModel.insert(ClassEntity.create4insert("TEST2", "this is test data."))
         classListViewModel.allClasses.observe(this.requireActivity(), { cls ->
             cls?.let { adapter.setClass(it) }
         })

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.github.datt16.taam.databinding.ClassListRecyclerViewItemBinding
 import io.github.datt16.taam.model.ClassEntity
@@ -41,6 +42,12 @@ class ClassListViewHolder(private val binding: ClassListRecyclerViewItemBinding)
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(cls: ClassEntity) {
+        val id = cls.id
+
+        binding.cardViewLayout.setOnClickListener {
+            val action = ClassListFragmentDirections.actionClassListFragmentToClassDetailFragment(id.toLong())
+            findNavController(it).navigate(action)
+        }
         binding.TitleTv.text = cls.name
         binding.subTitleTv.text = cls.description
     }
