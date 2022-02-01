@@ -7,12 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import io.github.datt16.taam.data.AppDatabase
 import io.github.datt16.taam.databinding.FragmentAddClassBinding
-import io.github.datt16.taam.databinding.FragmentClassListBinding
-import io.github.datt16.taam.model.ClassEntity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+
 
 class AddClassFragment : Fragment() {
 

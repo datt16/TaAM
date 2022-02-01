@@ -1,10 +1,9 @@
 package io.github.datt16.taam
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.github.datt16.taam.databinding.ClassListRecyclerViewItemBinding
@@ -28,6 +27,7 @@ class ClassListRecyclerViewAdapter internal constructor(context: Context) :
         holder.bind(classList[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     internal fun setClass(clsList: List<ClassEntity>) {
         this.classList = clsList
         notifyDataSetChanged()
