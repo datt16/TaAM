@@ -43,8 +43,6 @@ class AddClassFragment : Fragment() {
         if (TextUtils.isEmpty(newTitle)) {
             binding.classNameTil.error = "授業名を入力してください"
         } else {
-            
-
             // 授業リスト画面に遷移
             findNavController().navigate(R.id.action_addClassFragment_to_classListFragment)
         }

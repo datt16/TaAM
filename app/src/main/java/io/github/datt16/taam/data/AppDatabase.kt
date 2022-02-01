@@ -2,19 +2,21 @@ package io.github.datt16.taam.data
 
 import android.content.Context
 import android.util.Log
-import androidx.room.CoroutinesRoom
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
+import io.github.datt16.taam.model.AttendanceEntity
 import io.github.datt16.taam.model.ClassEntity
+import io.github.datt16.taam.model.Converters
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
-@Database(entities = [ClassEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ClassEntity::class, AttendanceEntity::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun classDao(): ClassDao
+    abstract fun attendanceDao(): AttendanceDao
 
     private class AppDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
@@ -22,8 +24,19 @@ abstract class AppDatabase : RoomDatabase() {
             INSTANCE?.let {
                 scope.launch(Dispatchers.IO) {
                     populateDatabase(it.classDao())
+                    setSample(it.attendanceDao())
                 }
             }
+        }
+
+        fun setSample(dao: AttendanceDao) {
+            dao.deleteAll()
+            dao.saveAttendanceRecord(
+                AttendanceEntity(id = 0, targetId = 1, created = Date(), status = AttendanceEntity.ok, index = 0)
+            )
+            dao.saveAttendanceRecord(
+                AttendanceEntity(id = 0, targetId = 1, created = Date(), status = AttendanceEntity.ok, index = 1)
+            )
         }
 
         fun populateDatabase(dao: ClassDao) {

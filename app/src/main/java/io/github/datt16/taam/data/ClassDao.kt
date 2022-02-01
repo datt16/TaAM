@@ -3,9 +3,6 @@ package io.github.datt16.taam.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import io.github.datt16.taam.model.ClassEntity
-import io.reactivex.Completable
-import io.reactivex.Maybe
-import io.reactivex.Single
 
 @Dao
 interface ClassDao {
