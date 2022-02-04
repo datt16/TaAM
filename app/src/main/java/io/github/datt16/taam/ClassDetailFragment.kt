@@ -1,6 +1,7 @@
 package io.github.datt16.taam
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +18,7 @@ class ClassDetailFragment : Fragment() {
     private var _binding: FragmentClassDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var classListViewModel: ClassListViewModel
-
+    private lateinit var classDetailViewModel: ClassDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +26,11 @@ class ClassDetailFragment : Fragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        classListViewModel = ViewModelProvider(
-            this,
-            ClassListViewModelFactory(activity?.application as Application)
-        ).get(ClassListViewModel::class.java)
+        classDetailViewModel = ViewModelProvider(
+            this, ClassDetailViewModelFactory(
+                activity?.application as Application, args.classId.toInt()
+            )
+        ).get(ClassDetailViewModel::class.java)
 
         _binding = FragmentClassDetailBinding.inflate(inflater, container, false)
 
@@ -38,11 +39,7 @@ class ClassDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val targetId = args.classId
-        classListViewModel.allClasses.observe(this.requireActivity(), { cls ->
-            cls?.let { list -> bind(list.filter { it.id == targetId.toInt() }) }
-        })
+        bind(classDetailViewModel.classData)
     }
 
     override fun onDestroyView() {
@@ -50,9 +47,9 @@ class ClassDetailFragment : Fragment() {
         _binding = null
     }
 
-    private fun bind(classData: List<ClassEntity>) {
-        binding.headerTitleTv.text = classData[0].name
-        binding.memoTv.text = classData[0].description
+    private fun bind(classData: ClassEntity) {
+        binding.headerTitleTv.text = classData.name
+        binding.memoTv.text = classData.description
     }
 
 
