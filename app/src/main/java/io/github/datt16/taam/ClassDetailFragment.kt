@@ -48,8 +48,9 @@ class ClassDetailFragment : Fragment() {
     }
 
     private fun bind(classData: ClassEntity) {
-        binding.headerTitleTv.text = classData.name
-        binding.memoTv.text = classData.description
+        // UIに変数を適用する処理
+        val memoText = "id: " + classData.id.toString()
+        binding.classMemoValueTv.text = memoText
     }
 
 
