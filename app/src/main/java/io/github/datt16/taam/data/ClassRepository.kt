@@ -8,7 +8,12 @@ class ClassRepository(private val classDao: ClassDao) {
     val allClasses: LiveData<List<ClassEntity>> = classDao.loadAllClasses()
 
     @WorkerThread
-    suspend fun insert(item: ClassEntity) {
+    fun insert(item: ClassEntity) {
         classDao.saveClass(item)
+    }
+
+    @WorkerThread
+    fun getClassById(id: Long):ClassEntity {
+        return classDao.findById(id)
     }
 }

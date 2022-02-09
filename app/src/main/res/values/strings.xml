@@ -2,4 +2,11 @@
     <string name="app_name">TaAM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="last_attendance_date_label">最後の出席確認</string>
+    <string name="attendance_ok_count_label">出席時数</string>
+    <string name="attendance_absence_count_label">欠席時数</string>
+    <string name="attendance_canceled_count_label">休講/公欠</string>
+    <string name="attendance_tool_label">出席確認方法</string>
+    <string name="credit_condition_label">単位取得条件</string>
+    <string name="common_memo_label">メモ</string>
 </resources>
