@@ -5,15 +5,14 @@ import androidx.lifecycle.LiveData
 import io.github.datt16.taam.model.AttendanceEntity
 import io.github.datt16.taam.model.ClassEntity
 
-class ClassRepository(private val classDao: ClassDao, private val attendanceDao: AttendanceDao) {
+class ClassRepository(private val classDao: ClassDao) {
     val allClasses: LiveData<List<ClassEntity>> = classDao.loadAllClasses()
 
-    @WorkerThread
-    suspend fun addClass(item: ClassEntity) {
+    fun insert(item: ClassEntity) {
         classDao.saveClass(item)
     }
 
-    suspend fun getAttendance(id: String): LiveData<List<AttendanceEntity>> {
-        return attendanceDao.findByClass(id)
+    fun getClassById(id: Long):ClassEntity {
+        return classDao.findById(id)
     }
 }

@@ -31,10 +31,10 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun setSample(dao: AttendanceDao) {
             dao.deleteAll()
-            dao.saveAttendanceRecord(
+            dao.insertAttendanceRecord(
                 AttendanceEntity(id = 0, targetId = 1, created = Date(), status = AttendanceEntity.ok, index = 0)
             )
-            dao.saveAttendanceRecord(
+            dao.insertAttendanceRecord(
                 AttendanceEntity(id = 0, targetId = 1, created = Date(), status = AttendanceEntity.ok, index = 1)
             )
         }

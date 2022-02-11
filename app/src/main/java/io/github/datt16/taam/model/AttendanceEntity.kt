@@ -6,8 +6,8 @@ import java.util.*
 
 @Entity(tableName = "attendances")
 data class AttendanceEntity(
-    @PrimaryKey val id: Int = 0, // id
-    val targetId: Int, // 教科オブジェクトのid
+    @PrimaryKey(autoGenerate = true) val id: Long = 0, // id
+    val targetId: Long, // 教科オブジェクトのid
     val created: Date, // 作成時のタイムスタンプ
     val status: String, // ok | absence | cancel
     val memo: String? = "",

@@ -26,8 +26,7 @@ class ClassListViewModel(app: Application) : AndroidViewModel(app) {
 
     init {
         val classDao = AppDatabase.getDatabase(app, scope).classDao()
-        val attendanceDao = AppDatabase.getDatabase(app, scope).attendanceDao()
-        repository = ClassRepository(classDao, attendanceDao)
+        repository = ClassRepository(classDao)
         allClasses = repository.allClasses
     }
 
@@ -35,12 +34,4 @@ class ClassListViewModel(app: Application) : AndroidViewModel(app) {
         super.onCleared()
         parentJob.cancel()
     }
-
-    fun insert(cls: ClassEntity) = scope.launch(Dispatchers.IO) {
-        repository.addClass(cls)
-    }
-
-
-
-
 }

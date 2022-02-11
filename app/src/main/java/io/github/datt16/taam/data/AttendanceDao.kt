@@ -16,14 +16,14 @@ interface AttendanceDao {
     fun findById(id: Long): AttendanceEntity
 
     @Query("SELECT * FROM attendances WHERE targetId = :id")
-    fun findByClass(id: String): LiveData<List<AttendanceEntity>>
+    fun findByClass(id: Long): List<AttendanceEntity>
 
     @Query("SELECT * FROM attendances WHERE created = :targetDate")
-    fun findAttendanceRecordOnDate(targetDate: Date): LiveData<List<AttendanceEntity>>
+    fun findAttendanceRecordOnDate(targetDate: Date): List<AttendanceEntity>
 
     // 挿入メソッド
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveAttendanceRecord(AttendanceEntity: AttendanceEntity)
+    fun insertAttendanceRecord(AttendanceEntity: AttendanceEntity)
 
     @Query("DELETE FROM attendances")
     fun deleteAll()
