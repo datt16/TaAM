@@ -6,11 +6,6 @@
     app:startDestination="@id/classListFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="io.github.datt16.taam.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
-    <fragment
         android:id="@+id/classListFragment"
         android:name="io.github.datt16.taam.ClassListFragment"
         android:label="fragment_class_list"
@@ -31,6 +26,9 @@
             android:name="classId"
             app:argType="long"
             android:defaultValue="1L" />
+        <action
+            android:id="@+id/action_classDetailFragment_to_addAttendanceFragment"
+            app:destination="@id/addAttendanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/addClassFragment"
@@ -40,5 +38,13 @@
         <action
             android:id="@+id/action_addClassFragment_to_classListFragment"
             app:destination="@id/classListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAttendanceFragment"
+        android:name="io.github.datt16.taam.AddAttendanceFragment"
+        android:label="AddAttendanceFragment" >
+        <action
+            android:id="@+id/action_addAttendanceFragment_to_classDetailFragment"
+            app:destination="@id/classDetailFragment" />
     </fragment>
 </navigation>

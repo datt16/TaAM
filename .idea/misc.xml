@@ -11,8 +11,11 @@
         <entry key="..\:/Users/osato/AndroidStudioProjects/TaAM/app/src/main/res/layout/fragment_class_table.xml" value="0.3625" />
         <entry key="..\:/Users/osato/AndroidStudioProjects/TaAM/app/src/main/res/layout/fragment_main.xml" value="0.1" />
         <entry key="..\:/Users/osato/AndroidStudioProjects/TaAM/app/src/main/res/layout/recycler_view_item.xml" value="0.3625" />
-        <entry key="app/src/main/res/layout/fragment_class_detail.xml" value="0.3321785166391606" />
+        <entry key="app/src/main/res/layout/activity_class_detail.xml" value="0.2109375" />
+        <entry key="app/src/main/res/layout/fragment_add_class.xml" value="0.2109375" />
+        <entry key="app/src/main/res/layout/fragment_class_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_class_list.xml" value="0.34375" />
+        <entry key="app/src/main/res/layout/fragment_set_attendance.xml" value="0.2109375" />
       </map>
     </option>
   </component>

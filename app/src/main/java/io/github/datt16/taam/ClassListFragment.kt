@@ -1,5 +1,6 @@
 package io.github.datt16.taam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,9 +49,9 @@ class ClassListFragment : Fragment() {
         val adapter = ClassListRecyclerViewAdapter(this.requireContext())
         recyclerView.adapter = adapter
 
-        classListViewModel.allClasses.observe(this.requireActivity(), { cls ->
+        classListViewModel.allClasses.observe(this.requireActivity()) { cls ->
             cls?.let { adapter.setClass(it) }
-        })
+        }
 
 
         binding.classListFab.setOnClickListener {
@@ -61,5 +62,12 @@ class ClassListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun goDetailPage(){
+        val intent = Intent(this.context, ClassDetailActivity::class.java)
+        intent.putExtra("ID", 1)
+        startActivity(intent)
+
     }
 }

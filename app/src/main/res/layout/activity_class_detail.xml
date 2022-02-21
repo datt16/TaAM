@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ClassDetailActivity">
+
+    <data>
+
+        <variable
+            name="model"
+            type="io.github.datt16.taam.ClassDetailViewModel" />
+
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="60dp" />
+
+        <LinearLayout
+            android:id="@+id/times_layout_part"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:paddingHorizontal="48dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:id="@+id/ok_times_label_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/attendance_ok_count_label"
+                    android:textColor="@color/material_on_surface_emphasis_medium" />
+
+                <TextView
+                    android:id="@+id/ok_times_value_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ok_times_label_Tv"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{Integer.toString(model.attendancePresenceCount)}"
+                    android:textColor="@color/material_on_background_emphasis_high_type" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:id="@+id/absence_times_label_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/attendance_absence_count_label"
+                    android:textColor="@color/material_on_surface_emphasis_medium" />
+
+                <TextView
+                    android:id="@+id/absence_times_value_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/absence_times_label_Tv"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{Integer.toString(model.attendanceAbsenceCount)}"
+                    android:textColor="@color/material_on_background_emphasis_high_type" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:id="@+id/canceled_times_label_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/attendance_canceled_count_label"
+                    android:textColor="@color/material_on_surface_emphasis_medium" />
+
+                <TextView
+                    android:id="@+id/canceled_times_value_Tv"
+                    style="@style/TextAppearance.MaterialComponents.Headline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/canceled_times_label_Tv"
+                    android:layout_centerHorizontal="true"
+                    android:text="@{Integer.toString(model.attendanceCanceledCount)}"
+                    android:textColor="@color/material_on_background_emphasis_high_type" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="次の時間: 6時間目" />
+
+            <Button
+                android:id="@+id/attendance_go_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingHorizontal="8dp"
+                android:text="出席確認" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="60dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_attendance_date_label"
+                android:textColor="@color/material_on_surface_emphasis_medium" />
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:id="@+id/class_attendance_last_date_Tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{model.lastAttendanceDate.toString()}"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/attendance_tool_label"
+                android:textColor="@color/material_on_surface_emphasis_medium" />
+
+            <TextView
+                android:id="@+id/class_attendance_tool_Tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Moodle"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/credit_condition_label"
+                android:textColor="@color/material_on_surface_emphasis_medium" />
+
+            <TextView
+                android:id="@+id/class_credit_condition_Tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="総授業日数の 3/4 以上出席"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0dp"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_memo_label"
+                android:textColor="@color/material_on_surface_emphasis_medium" />
+
+            <TextView
+                android:id="@+id/class_memo_value_Tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_memo_label"
+                android:textColor="@color/material_on_surface_emphasis_high_type" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
