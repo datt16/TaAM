@@ -1,6 +1,7 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classdetail
 
 import androidx.lifecycle.AndroidViewModel
+import io.github.datt16.taam.Application
 import io.github.datt16.taam.data.AppDatabase
 import io.github.datt16.taam.data.AttendanceRepository
 import io.github.datt16.taam.data.ClassRepository

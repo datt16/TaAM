@@ -40,7 +40,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="社会実装演習I"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
                         app:layout_constraintBaseline_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,9 +81,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="end"
                     android:layout_marginTop="64dp"
-                    android:paddingEnd="32dp">
+                    android:paddingEnd="16dp">
 
                     <Space
                         android:layout_width="0dp"
@@ -95,17 +94,17 @@
                         style="@style/TextAppearance.MaterialComponents.Headline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|end"
-                        android:layout_marginEnd="8dp"
+                        android:layout_gravity="end"
                         android:text="出席"
                         android:textColor="@color/white" />
 
                     <ImageView
+                        android:foreground="@color/white"
+                        android:layout_gravity="center_vertical"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:layout_gravity="center_vertical"
-                        android:contentDescription="set-attendance"
-                        android:src="@drawable/ic_baseline_arrow_forward_24" />
+                        android:src="@drawable/ic_baseline_arrow_forward_24"
+                        android:contentDescription="set-attendance" />
                 </LinearLayout>
 
             </LinearLayout>

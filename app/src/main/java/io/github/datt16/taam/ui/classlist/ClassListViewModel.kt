@@ -1,14 +1,14 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classlist
 
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import io.github.datt16.taam.Application
 import io.github.datt16.taam.data.AppDatabase
 import io.github.datt16.taam.data.ClassRepository
 import io.github.datt16.taam.model.ClassEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class ClassListViewModel(app: Application) : AndroidViewModel(app) {

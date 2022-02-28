@@ -1,4 +1,4 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import io.github.datt16.taam.R
 import io.github.datt16.taam.databinding.FragmentAddClassBinding
 
 

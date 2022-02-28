@@ -1,14 +1,16 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classdetail
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import io.github.datt16.taam.Application
+import io.github.datt16.taam.ui.classdetail.ClassDetailViewModel
+import io.github.datt16.taam.ui.classdetail.ClassDetailViewModelFactory
+import io.github.datt16.taam.R
 import io.github.datt16.taam.databinding.ActivityClassDetailBinding
+import io.github.datt16.taam.ui.attendance.AddAttendanceFragment
 
 class ClassDetailActivity : AppCompatActivity() {
 
@@ -23,8 +25,15 @@ class ClassDetailActivity : AppCompatActivity() {
             )
         }
 
+        val attendanceFragment = AddAttendanceFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+
+        Log.d("CDA:onCreate", model.hashCode().toString())
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_class_detail)
         binding.model = model
+
+        transaction.add(R.id.attendanceView, attendanceFragment)
+        transaction.commit()
     }
 }

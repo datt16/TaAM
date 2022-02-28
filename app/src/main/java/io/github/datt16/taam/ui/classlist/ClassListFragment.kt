@@ -1,4 +1,4 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classlist
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.github.datt16.taam.*
 import io.github.datt16.taam.databinding.FragmentClassListBinding
 import io.github.datt16.taam.model.ClassEntity
+import io.github.datt16.taam.ui.classdetail.ClassDetailActivity
 
 class ClassListFragment : Fragment() {
 

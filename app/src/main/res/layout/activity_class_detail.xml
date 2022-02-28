@@ -2,14 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ClassDetailActivity">
+    tools:context=".ui.classdetail.ClassDetailActivity">
 
     <data>
 
         <variable
             name="model"
-            type="io.github.datt16.taam.ClassDetailViewModel" />
-
+            type="io.github.datt16.taam.ui.classdetail.ClassDetailViewModel" />
 
 
     </data>
@@ -157,8 +156,8 @@
                 android:textColor="@color/material_on_surface_emphasis_medium" />
 
             <TextView
-                style="@style/TextAppearance.MaterialComponents.Body1"
                 android:id="@+id/class_attendance_last_date_Tv"
+                style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{model.lastAttendanceDate.toString()}"
@@ -239,6 +238,12 @@
                 android:text="@string/common_memo_label"
                 android:textColor="@color/material_on_surface_emphasis_high_type" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/attendanceView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
     </LinearLayout>
 </layout>

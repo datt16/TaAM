@@ -1,4 +1,4 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import io.github.datt16.taam.Application
+import io.github.datt16.taam.R
 import io.github.datt16.taam.databinding.FragmentClassDetailBinding
 import io.github.datt16.taam.model.ClassEntity
 import java.text.SimpleDateFormat

@@ -5,11 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
-import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.github.datt16.taam.databinding.ClassListRecyclerViewItemBinding
 import io.github.datt16.taam.model.ClassEntity
+import io.github.datt16.taam.ui.classdetail.ClassDetailActivity
 
 class ClassListRecyclerViewAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<ClassListViewHolder>() {

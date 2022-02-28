@@ -1,7 +1,8 @@
-package io.github.datt16.taam
+package io.github.datt16.taam.ui.classdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import io.github.datt16.taam.Application
 
 class ClassDetailViewModelFactory(private var application: Application, private val classId: Int) :
     ViewModelProvider.Factory {
