@@ -16,7 +16,7 @@ interface AttendanceDao {
     fun findById(id: Long): AttendanceEntity
 
     @Query("SELECT * FROM attendances WHERE targetId = :id")
-    fun findByClass(id: Long): List<AttendanceEntity>
+    fun findByClass(id: Long): LiveData<List<AttendanceEntity>>
 
     @Query("SELECT * FROM attendances WHERE created = :targetDate")
     fun findAttendanceRecordOnDate(targetDate: Date): List<AttendanceEntity>

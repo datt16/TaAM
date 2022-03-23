@@ -9,11 +9,10 @@
         <variable
             name="model"
             type="io.github.datt16.taam.ui.classdetail.ClassDetailViewModel" />
-
-
     </data>
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -128,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="次の時間: 6時間目" />
+                android:text="@{`次の時間: ` + String.valueOf(model.nextClassIndex) + `時間目`}" />
 
             <Button
                 android:id="@+id/attendance_go_btn"

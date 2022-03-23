@@ -1,16 +1,17 @@
 package io.github.datt16.taam.ui.classdetail
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.util.AttributeSet
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import io.github.datt16.taam.Application
-import io.github.datt16.taam.ui.classdetail.ClassDetailViewModel
-import io.github.datt16.taam.ui.classdetail.ClassDetailViewModelFactory
 import io.github.datt16.taam.R
 import io.github.datt16.taam.databinding.ActivityClassDetailBinding
-import io.github.datt16.taam.ui.attendance.AddAttendanceFragment
+import io.github.datt16.taam.ui.attendance.AddAttendanceDialogFragment
 
 class ClassDetailActivity : AppCompatActivity() {
 
@@ -25,15 +26,27 @@ class ClassDetailActivity : AppCompatActivity() {
             )
         }
 
-        val attendanceFragment = AddAttendanceFragment()
-        val transaction = supportFragmentManager.beginTransaction()
+        model.attendances.observe(this, Observer {
+            model.setAttendanceItems(it)
+        })
 
-        Log.d("CDA:onCreate", model.hashCode().toString())
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_class_detail)
         binding.model = model
+        binding.lifecycleOwner = this
 
-        transaction.add(R.id.attendanceView, attendanceFragment)
-        transaction.commit()
+        binding.attendanceGoBtn.setOnClickListener {
+            val dialog = AddAttendanceDialogFragment()
+            dialog.show(supportFragmentManager, dialog.TAG)
+        }
+    }
+
+    override fun onCreateView(
+        parent: View?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet
+    ): View? {
+        return super.onCreateView(parent, name, context, attrs)
     }
 }

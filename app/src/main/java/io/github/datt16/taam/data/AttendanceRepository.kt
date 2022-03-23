@@ -10,11 +10,12 @@ class AttendanceRepository(private val attendanceDao: AttendanceDao) {
     val allAttendanceRecords: LiveData<List<AttendanceEntity>> =
         attendanceDao.getAllAttendanceRecord()
 
-    fun insert(item: AttendanceEntity) {
+    @WorkerThread
+    suspend fun insert(item: AttendanceEntity) {
         attendanceDao.insertAttendanceRecord(item)
     }
 
-    fun getRecordByClassId(id: Long): List<AttendanceEntity> {
+    fun getRecordByClassId(id: Long): LiveData<List<AttendanceEntity>> {
         return attendanceDao.findByClass(id)
     }
 
